@@ -14,7 +14,7 @@ import FoodTypes from "../components/FoodTypes";
 import QuickFood from "../components/QuickFood";
 import { Ionicons } from "@expo/vector-icons";
 import hotels from "../data/hotels";
-import MenuItem from "../components/MenuItem";
+import Hotel from "../components/Hotel";
 
 export default function HomeScreen() {
   const data = hotels;
@@ -51,7 +51,7 @@ export default function HomeScreen() {
 
       {/* Menu items section */}
       {data.map((item, index) => (
-        <MenuItem key={index} item={item} />
+        <Hotel key={index} item={item} />
       ))}
     </ScrollView>
   );
