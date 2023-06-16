@@ -36,8 +36,8 @@ const FoodItem = ({ item }) => {
           </Pressable>
 
           {selected.includes(item.name)
-            ? item.items.map((item, index) => (
-                <MenuComponent item={item} key={index} />
+            ? item.items.map((food, index) => (
+                <MenuComponent food={food} key={index} />
               ))
             : null}
         </>
