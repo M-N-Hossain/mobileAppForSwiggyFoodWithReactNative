@@ -9,13 +9,13 @@ import {
   removeFromCart,
 } from "../redux/CartReducer";
 
-const MenuComponent = ({ food }) => {
+const MenuComponent = ({ food, key }) => {
   const dispatch = useDispatch();
   const [addItems, setAddItems] = useState(0);
   const [selected, setSelected] = useState(false);
 
   return (
-    <View>
+    <View key={key}>
       <Pressable
         style={{
           margin: 10,

@@ -14,7 +14,10 @@ const MenuScreen = () => {
   const [menu, setMenu] = useState([]);
 
   const cart = useSelector((state) => state.cartInfo.cart);
-  console.log(cart);
+  const totalPrice = cart
+    .map((item) => item.price * item.quantity)
+    .reduce((total, itemPrice) => total + itemPrice, 0);
+  console.log(totalPrice);
 
   useEffect(() => {
     const fetchMenu = () => {
@@ -223,6 +226,63 @@ const MenuScreen = () => {
           </View>
         </View>
       </Modal>
+
+      {/* Cart section */}
+
+      {totalPrice === 0 ? null : (
+        <Pressable
+          style={{
+            backgroundColor: "#00A877",
+            width: "90%",
+            padding: 13,
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginBottom: 30,
+            position: "absolute",
+            borderRadius: 8,
+            left: 20,
+            bottom: 10,
+          }}
+        >
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <View>
+              <Text
+                style={{ fontSize: 16, fontWeight: "bold", color: "white" }}
+              >
+                {cart.length} items | {totalPrice}
+              </Text>
+              <Text
+                style={{
+                  fontSize: 14,
+                  fontWeight: "500",
+                  marginTop: 3,
+                  color: "white",
+                }}
+              >
+                Extra Charges may Apply!
+              </Text>
+            </View>
+
+            <Pressable
+              onPress={() =>
+                navigatation.navigate("Cart", {
+                  name: route.params.name,
+                })
+              }
+            >
+              <Text style={{ fontSize: 18, fontWeight: "600", color: "white" }}>
+                View Cart
+              </Text>
+            </Pressable>
+          </View>
+        </Pressable>
+      )}
     </>
   );
 };
