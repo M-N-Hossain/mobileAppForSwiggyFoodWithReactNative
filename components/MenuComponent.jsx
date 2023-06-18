@@ -34,7 +34,7 @@ const MenuComponent = ({ food, key }) => {
           >
             {[0, 0, 0, 0, 0].map((en, i) => (
               <FontAwesome
-                // key={`${food.id}-${i}`}
+                //  ={`${food.id}-${i}`}
                 style={{ paddingHorizontal: 3 }}
                 name={i < Math.floor(food.rating) ? "star" : "star-o"}
                 size={15}
